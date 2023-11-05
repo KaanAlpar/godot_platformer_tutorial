@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp85j622dovpm"]
+
+[ext_resource type="TileSet" uid="uid://bt054qbphnylc" path="res://resources/default_tileset.tres" id="1_1166p"]
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource("1_1166p")
+format = 2
+layer_0/name = "Ground"
+layer_1/name = " Grass"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
