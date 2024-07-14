@@ -7,6 +7,7 @@ size = Vector2(80, 80)
 size = Vector2(80, 80)
 
 [node name="Box" type="StaticBody2D"]
+z_index = -1
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0.180392, 0.0901961, 0, 1)

@@ -419,3 +419,9 @@ target_position = Vector2(0, -16)
 [node name="CrouchRaycast_2" type="RayCast2D" parent="."]
 position = Vector2(7, -16)
 target_position = Vector2(0, -16)
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
