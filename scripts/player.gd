@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var crouch_raycast2 = $CrouchRaycast_2
 @onready var coyote_timer = $CoyoteTimer
 @onready var jump_buffer_timer = $JumpBufferTimer
+@onready var jump_height_timer = $JumpHeightTimer
 
 var is_crouching = false
 var stuck_under_object = false
@@ -27,6 +28,7 @@ func _physics_process(delta):
 			velocity.y = 1000
 	
 	if Input.is_action_just_pressed("jump"):
+		jump_height_timer.start()
 		jump()
 	
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
@@ -85,6 +87,14 @@ func _on_coyote_timer_timeout():
 func _on_jump_buffer_timer_timeout():
 	jump_buffered = false
 
+func _on_jump_height_timer_timeout():
+	if !Input.is_action_pressed("jump"):
+		if velocity.y < -100:
+			velocity.y = -100
+			print("Low jump")
+	else:
+		print("High jump")
+
 func above_head_is_empty() -> bool:
 	var result = !crouch_raycast1.is_colliding() && !crouch_raycast2.is_colliding()
 	return result
@@ -127,4 +137,3 @@ func stand():
 	is_crouching = false
 	cshape.shape = standing_cshape
 	cshape.position.y = -16
-
